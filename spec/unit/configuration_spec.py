@@ -5,6 +5,7 @@ import fudge
 sys.path.insert(0, os.path.abspath('..'))
 from flyingsphinx import Configuration
 
+@fudge.test
 def test_configuration_upload():
   api = fudge.Fake('API')
   api.expects('put').with_args('/', {'configuration': 'provided content'})
