@@ -12,8 +12,9 @@ __author__    = 'Pat Allan'
 __license__   = 'MIT'
 __copyright__ = 'Copyright 2012 Pat Allan'
 
-from .api    import API
-from .sphinx import Sphinx
+from .api           import API
+from .configuration import Configuration
+from .sphinx        import Sphinx
 
 def sphinx():
   return Sphinx(API())

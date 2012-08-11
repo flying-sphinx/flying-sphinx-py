@@ -11,10 +11,10 @@ class API(object):
     self.api_key    = api_key    or os.environ['FLYING_SPHINX_API_KEY']
 
   def post(self, path, body={}):
-    requests.post(
-      API.URI_BASE + path,
-      body, self._headers()
-    )
+    requests.post(API.URI_BASE + path, body, self._headers())
+
+  def put(self, path, body={}):
+    requests.put(API.URI_BASE + path, body, self._headers())
 
   def _headers(self):
     return {
