@@ -10,6 +10,9 @@ class API(object):
     self.identifier = identifier or os.environ['FLYING_SPHINX_IDENTIFIER']
     self.api_key    = api_key    or os.environ['FLYING_SPHINX_API_KEY']
 
+  def get(self, path, body={}):
+    requests.get(API.URI_BASE + path, body, self._headers())
+
   def post(self, path, body={}):
     requests.post(API.URI_BASE + path, body, self._headers())
 
