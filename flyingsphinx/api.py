@@ -33,4 +33,4 @@ class API(object):
     return API.URI_BASE + path
 
   def _send(self, http_method, path, body):
-    return http_method(self._normalised_uri(path), body, self._headers())
+    return http_method(self._normalised_uri(path), body, self._headers()).json()
