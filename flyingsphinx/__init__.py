@@ -13,9 +13,14 @@ __license__   = 'MIT'
 __copyright__ = 'Copyright 2012 Pat Allan'
 
 from .api           import API
+from .cli           import CLI
 from .configuration import Configuration
 from .index         import Index
 from .sphinx        import Sphinx
+
+def cli():
+  import sys
+  return CLI(sys.argv[1], sys.argv[2:])
 
 def configuration():
   return Configuration(API())

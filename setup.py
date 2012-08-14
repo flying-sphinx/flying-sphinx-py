@@ -19,6 +19,11 @@ setup(
   include_package_data = True,
   install_requires     = ['requests'],
   license              = open('LICENCE').read(),
+  entry_points         = {
+    'console_scripts': [
+      'flyingsphinx = flyingsphinx:cli'
+    ]
+  },
   classifiers          = (
     'Development Status :: 3 - Alpha',
     'Intended Audience :: Developers',
