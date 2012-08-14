@@ -4,7 +4,7 @@ import fudge
 import requests
 
 sys.path.insert(0, os.path.abspath('..'))
-from flyingsphinx import API, version
+from flyingsphinx import API, __version__
 
 @fudge.patch('requests.get')
 def test_get(get_method):
@@ -15,7 +15,7 @@ def test_get(get_method):
     'https://flying-sphinx.com/api/my/app/path', {'id': '55'}, {
       'Accept':                  'application/vnd.flying-sphinx-v3+json',
       'X-Flying-Sphinx-Token':   'abc:123',
-      'X-Flying-Sphinx-Version': ('%s+python' % version())
+      'X-Flying-Sphinx-Version': ('%s+python' % __version__)
     }
   ).returns(response)
 
@@ -41,7 +41,7 @@ def test_post(post_method):
     'https://flying-sphinx.com/api/my/app/start', {}, {
       'Accept':                  'application/vnd.flying-sphinx-v3+json',
       'X-Flying-Sphinx-Token':   'abc:123',
-      'X-Flying-Sphinx-Version': ('%s+python' % version())
+      'X-Flying-Sphinx-Version': ('%s+python' % __version__)
     }
   ).returns(response)
 
@@ -67,7 +67,7 @@ def test_put(put_method):
     'https://flying-sphinx.com/api/my/app/path', {'foo': 'bar'}, {
       'Accept':                  'application/vnd.flying-sphinx-v3+json',
       'X-Flying-Sphinx-Token':   'abc:123',
-      'X-Flying-Sphinx-Version': ('%s+python' % version())
+      'X-Flying-Sphinx-Version': ('%s+python' % __version__)
     }
   ).returns(response)
 

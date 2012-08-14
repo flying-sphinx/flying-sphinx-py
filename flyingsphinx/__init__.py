@@ -7,7 +7,7 @@ flyingsphinx
 """
 
 __title__     = 'flyingsphinx'
-__version__   = '0.0.6'
+__version__   = '0.0.10'
 __author__    = 'Pat Allan'
 __license__   = 'MIT'
 __copyright__ = 'Copyright 2012 Pat Allan'
@@ -28,6 +28,3 @@ def info():
 
 def sphinx():
   return Sphinx(API())
-
-def version():
-  return __version__
