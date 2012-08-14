@@ -7,14 +7,24 @@ flyingsphinx
 """
 
 __title__     = 'flyingsphinx'
-__version__   = '0.0.1'
+__version__   = '0.0.6'
 __author__    = 'Pat Allan'
 __license__   = 'MIT'
 __copyright__ = 'Copyright 2012 Pat Allan'
 
 from .api           import API
 from .configuration import Configuration
+from .index         import Index
 from .sphinx        import Sphinx
+
+def configuration():
+  return Configuration(API())
+
+def index():
+  return Index(API())
 
 def sphinx():
   return Sphinx(API())
+
+def version():
+  return __version__
