@@ -9,10 +9,10 @@ class CLI(object):
       flyingsphinx.index().run()
     elif command == 'start':
       flyingsphinx.sphinx().start()
-      print 'Sphinx stopped'
+      print 'Sphinx started'
     elif command == 'stop':
       flyingsphinx.sphinx().stop()
-      print 'Sphinx started'
+      print 'Sphinx stopped'
     elif command == 'restart':
       flyingsphinx.sphinx().stop()
       print 'Sphinx stopped'

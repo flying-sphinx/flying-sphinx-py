@@ -7,7 +7,7 @@ flyingsphinx
 """
 
 __title__     = 'flyingsphinx'
-__version__   = '0.0.10'
+__version__   = '0.1.0'
 __author__    = 'Pat Allan'
 __license__   = 'MIT'
 __copyright__ = 'Copyright 2012 Pat Allan'
@@ -20,7 +20,7 @@ from .sphinx        import Sphinx
 
 def cli():
   import sys
-  return CLI(sys.argv[1], sys.argv[2:])
+  CLI(sys.argv[1], sys.argv[2:])
 
 def configuration():
   return Configuration(API())

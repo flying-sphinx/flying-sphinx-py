@@ -9,7 +9,7 @@ os.environ['PYTHONDONTWRITEBYTECODE'] = '1'
 
 setup(
   name                 = 'flyingsphinx',
-  version              = '0.0.10',
+  version              = '0.1.0',
   description          = 'Flying Sphinx Python client',
   long_description     = 'Flying Sphinx API client for Python applications',
   author               = 'Pat Allan',

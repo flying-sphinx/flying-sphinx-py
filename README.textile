@@ -28,22 +28,29 @@ flyingsphinx.configuration().upload_settings_from_file('wordforms', '/path/to/wo
 
 The next step is to have Sphinx index all of your data. This will require Flying Sphinx to talk directly to your database - so please ensure the database credentials in your configuration are correct.
 
-<pre><code>flyingsphinx.index().run()</code></pre>
+<pre><code>$ flyingsphinx index</code></pre>
 
-When you only want to process certain indices, pass their names in to the @run@ method as an array:
+When you only want to process certain indices, provide them as additional arguments from the command line:
 
-<pre><code>flyingsphinx.index().run(['article', 'user'])</code></pre>
-
-If you wish to view the output of the most recently run indexing request, here's the relevant code:
-
-<pre><code>flyingsphinx.index().last()</code></pre>
+<pre><code>$ flyingsphinx index article user</code></pre>
 
 And - provided the indexes were processed without any issues, you can then get the daemon running:
 
-<pre><code>flyingsphinx.sphinx().start() # start the remote Sphinx daemon
-flyingsphinx.sphinx().stop()  # stop the remote Sphinx daemon</code></pre>
+<pre><code>$ flyingsphinx start
+$ flyingsphinx stop</code></pre>
 
-Searching is dependant on whichever Sphinx client library you're using - but the server and port are available on Heroku via environment variables: FLYING_SPHINX_HOST and FLYING_SPHINX_PORT. You can also get this information from the Flying Sphinx API as well:
+There's two other useful commands: @restart@, which stops Sphinx and starts it up again, and @rebuild@, which stops Sphinx, processes the indices, then starts it up again. The latter is particularly useful when you're changing your Sphinx configuration structure.
+
+<pre><code>$ flyingsphinx restart
+$ flyingsphinx rebuild</code></pre>
+
+All of these commands can be run through via Heroku's command line tool:
+
+<pre><code>heroku run flyingsphinx index</code></pre>
+
+And they can also be called through Heroku's scheduler - and given regular indexing is important, you'll probably want to add @flyingsphinx index@ as a regular job there.
+
+Searching is dependant on whichever Sphinx client library you're using - but the server and port are available on Heroku via environment variables: FLYING_SPHINX_HOST and FLYING_SPHINX_PORT. You can also get this information from the Flying Sphinx API as well from within Python:
 
 <pre><code>import flyingsphinx
 
