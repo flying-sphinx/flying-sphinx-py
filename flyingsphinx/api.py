@@ -12,13 +12,16 @@ class API(object):
     self.api_key    = api_key    or os.environ['FLYING_SPHINX_API_KEY']
 
   def get(self, path, body={}):
-    return self._send(requests.get, path, body)
+    return requests.get(self._normalised_uri(path), params = body,
+      headers = self._headers()).json
 
   def post(self, path, body={}):
-    return self._send(requests.post, path, body)
+    return requests.post(self._normalised_uri(path), body,
+      headers = self._headers()).json
 
   def put(self, path, body={}):
-    return self._send(requests.put, path, body)
+    return requests.put(self._normalised_uri(path), body,
+      headers = self._headers()).json
 
   def _headers(self):
     return {
@@ -31,6 +34,3 @@ class API(object):
     path = '' if (path == '/') else ('/%s' % re.sub(r"^/", '', path))
 
     return API.URI_BASE + path
-
-  def _send(self, http_method, path, body):
-    return http_method(self._normalised_uri(path), body, self._headers()).json()
