@@ -23,6 +23,9 @@ def configuration():
 def index():
   return Index(API())
 
+def info():
+  return API().get('/')
+
 def sphinx():
   return Sphinx(API())
 
