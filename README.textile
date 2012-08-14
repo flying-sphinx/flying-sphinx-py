@@ -1,5 +1,7 @@
 h1. Flying Sphinx for Python
 
+!https://secure.travis-ci.org/flying-sphinx/flying-sphinx-py.png?branch=master(Build Status)!:http://travis-ci.org/flying-sphinx/flying-sphinx-py
+
 This is a python client for "flying-sphinx.com":https://flying-sphinx.com (initially just as a Heroku add-on, but other platforms will be added too). Consider it an alpha at the moment - the functionality's there, things work, but you may need to read the source a little. Will be improving documentation as soon as I can!
 
 h2. Installation
