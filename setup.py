@@ -9,7 +9,7 @@ os.environ['PYTHONDONTWRITEBYTECODE'] = '1'
 
 setup(
   name                 = 'flyingsphinx',
-  version              = '0.1.0',
+  version              = '0.2.0',
   description          = 'Flying Sphinx Python client',
   long_description     = 'Flying Sphinx API client for Python applications',
   author               = 'Pat Allan',
@@ -21,7 +21,7 @@ setup(
   license              = open('LICENCE').read(),
   entry_points         = {
     'console_scripts': [
-      'flyingsphinx = flyingsphinx:cli'
+      'flying-sphinx = flyingsphinx:cli'
     ]
   },
   classifiers          = (

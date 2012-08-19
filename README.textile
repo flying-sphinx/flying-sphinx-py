@@ -14,41 +14,53 @@ h2. Usage
 
 First thing to note is that the default credentials are sourced from the environment (FLYING_SPHINX_IDENTIFIER and FLYING_SPHINX_API_KEY). On Heroku, these are provided automatically with the add-on, so you shouldn't need to tweak anything. Elsewhere you probably will though.
 
+Also: every command-line call specified can be (and usually _should_ be) called within the context of Heroku. For example, @flying-sphinx index@ becomes @heroku run flying-sphinx index@.
+
+h3. Configuration
+
 When you're getting started, you'll need to make sure you've got your Sphinx configuration loaded on the Flying Sphinx servers. This can be done like so:
+
+<pre><code>$ flying-sphinx configure /path/to/sphinx.conf</code></pre>
+
+However, if you want to upload a dynamically generated configuration, or you have associated files for stopwords, exceptions or wordforms, then you'll need to use this library via some Python code:
 
 <pre><code>import flyingsphinx
 
 flyingsphinx.configuration().upload('raw sphinx configuration')
 # or
-flyingsphinx.configuration().upload_from_file('/path/to/file.conf')</code></pre>
+flyingsphinx.configuration().upload_from_file('/path/to/file.conf')
 
-If you have additional files used by certain settings (such as wordforms and stopwords), then these should be sent through as well:
-
-<pre><code>flyingsphinx.configuration().upload_settings('wordforms', 'wordforms.txt', 'contents of file')
+flyingsphinx.configuration().upload_settings('wordforms', 'wordforms.txt', 'contents of file')
 # or
 flyingsphinx.configuration().upload_settings_from_file('wordforms', '/path/to/wordforms.txt')</code></pre>
 
+h3. Processing Indices
+
 The next step is to have Sphinx index all of your data. This will require Flying Sphinx to talk directly to your database - so please ensure the database credentials in your configuration are correct.
 
-<pre><code>$ flyingsphinx index</code></pre>
+<pre><code>$ flying-sphinx index</code></pre>
 
 When you only want to process certain indices, provide them as additional arguments from the command line:
 
-<pre><code>$ flyingsphinx index article user</code></pre>
+<pre><code>$ flying-sphinx index article user</code></pre>
+
+h3. Controlling the Daemon
 
 And - provided the indexes were processed without any issues, you can then get the daemon running:
 
-<pre><code>$ flyingsphinx start
-$ flyingsphinx stop</code></pre>
+<pre><code>$ flying-sphinx start
+$ flying-sphinx stop</code></pre>
+
+h3. Convenience Commands
 
 There's two other useful commands: @restart@, which stops Sphinx and starts it up again, and @rebuild@, which stops Sphinx, processes the indices, then starts it up again. The latter is particularly useful when you're changing your Sphinx configuration structure.
 
-<pre><code>$ flyingsphinx restart
-$ flyingsphinx rebuild</code></pre>
+<pre><code>$ flying-sphinx restart
+$ flying-sphinx rebuild</code></pre>
 
 All of these commands can be run through via Heroku's command line tool:
 
-<pre><code>heroku run flyingsphinx index</code></pre>
+<pre><code>heroku run flying-sphinx index</code></pre>
 
 And they can also be called through Heroku's scheduler - and given regular indexing is important, you'll probably want to add @flyingsphinx index@ as a regular job there.
 
