@@ -5,7 +5,10 @@ class Configuration(object):
     self.api = api
 
   def upload(self, configuration):
-    self.api.put('/', {'configuration': configuration})
+    self.api.put('/', {
+      'configuration': configuration,
+      'sphinx_version': '2.0.4'
+    })
 
   def upload_from_file(self, path):
     file = open(path)
