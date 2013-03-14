@@ -1,6 +1,6 @@
 distribute==0.6.27
 fudge==1.0.3
 nose==1.1.2
-requests==0.13.6
+requests==1.1.0
 should-dsl==2.0a4
 wsgiref==0.1.2

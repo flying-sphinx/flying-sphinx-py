@@ -13,15 +13,15 @@ class API(object):
 
   def get(self, path, body={}):
     return requests.get(self._normalised_uri(path), params = body,
-      headers = self._headers()).json
+      headers = self._headers()).json()
 
   def post(self, path, body={}):
     return requests.post(self._normalised_uri(path), body,
-      headers = self._headers()).json
+      headers = self._headers()).json()
 
   def put(self, path, body={}):
     return requests.put(self._normalised_uri(path), body,
-      headers = self._headers()).json
+      headers = self._headers()).json()
 
   def _headers(self):
     return {
